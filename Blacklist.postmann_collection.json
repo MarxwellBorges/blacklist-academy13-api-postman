@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "69be5dc9-a33b-485f-a8d8-78d9a886d2e4",
-		"name": "Black list",
+		"name": "Blacklist",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "31153890"
 	},
@@ -10,26 +10,104 @@
 			"name": "Users",
 			"item": [
 				{
+					"name": "Login Admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"tokenUsers\", pm.variables.replaceIn(JSON.parse(responseBody).token));\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"mail\": \"{{emailQacoders}}\",\r\n  \"password\": \"{{passwordQacoders}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Register User",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"exec": [
+									"pm.environment.set(\"userId\", JSON.parse(responseBody).user._id);\r",
 									"\r",
+									"pm.sendRequest({\r",
+									"    url: `${pm.environment.get(\"url\")}/user/${pm.environment.get(\"userId\")}`,\r",
+									"    method: 'GET',\r",
+									"    header: {\r",
+									"        \"Authorization\": `${pm.environment.get(\"tokenUsers\")}`\r",
+									"    }\r",
+									"}, function (err, response) {\r",
+									"    try {\r",
+									"        pm.expect(response.json()).exist;\r",
+									"        testResult = true;\r",
+									"    } catch(error) {\r",
+									"        testResult = false;\r",
+									"        pm.test(\"Create user\", function () {\r",
+									"            pm.expect(true).to.eql(testResult);\r",
+									"        });\r",
+									"    }\r",
+									"    if (testResult !== false) {\r",
+									"        pm.test(\"User created and saved in the database.\", function () {\r",
+									"            pm.expect(pm.environment.get(\"userId\")).to.eql(response.json()._id);\r",
+									"        });\r",
+									"        pm.test(\"Status fullName is true\", function () {\r",
+									"            pm.expect(pm.environment.get(\"fullName\")).to.eql(response.json().fullName);\r",
+									"        });\r",
+									"        pm.test(\"Status email is true\", function () {\r",
+									"            pm.expect(pm.environment.get(\"mailUser\")).to.eql(response.json().mail);\r",
+									"        });\r",
+									"        pm.test(\"Status cpf is true\", function () {\r",
+									"            pm.expect(pm.environment.get(\"CPF\")).to.eql(response.json().cpf);\r",
+									"        });\r",
+									"        pm.test(\"Status code is 201\", function () {\r",
+									"            pm.response.to.have.status(201);\r",
+									"        });\r",
 									"\r",
-									"\r",
-									"pm.test(\"Status code is 201\", function () {\r",
-									"    pm.response.to.have.status(201);\r",
-									"});\r",
-									"\r",
-									"\r",
-									"\r",
-									"\r",
-									"\r",
-									"\r",
-									"\r",
-									""
+									"    }\r",
+									"});"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -62,7 +140,8 @@
 									"    pm.environment.get(\"FirstName\") + \" \" + pm.environment.get(\"LastName\"))\r",
 									"\r",
 									"\r",
-									"pm.environment.set(\"mailUser\", pm.environment.get(\"fullName\").toLowerCase().replace(/\\s/g, \"\").normalize(\"NFD\").replace(/[\\u0300-\\u036f]/g, \"\") + '@qacoders.com.br')\r",
+									"\r",
+									"pm.environment.set(\"mailUser\", pm.environment.get(\"fullName\").toLowerCase().replace(/\\s/g, \"\").normalize(\"NFD\").replace(/[\\u0300-\\u036f]/g, \"\")  + pm.variables.replaceIn('{{$guid}}') + '@qacoders.com.br')\r",
 									"\r",
 									" \r",
 									"\r",
@@ -146,61 +225,6 @@
 							],
 							"path": [
 								"user"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Login Admin",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.environment.set(\"tokenUsers\", pm.variables.replaceIn(JSON.parse(responseBody).token));\r",
-									"\r",
-									"\r",
-									"\r",
-									"\r",
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						},
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"mail\": \"{{emailQacoders}}\",\r\n  \"password\": \"{{passwordQacoders}}\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/login",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"login"
 							]
 						}
 					},
