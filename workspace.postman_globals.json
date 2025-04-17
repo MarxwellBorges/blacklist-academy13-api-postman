@@ -1,0 +1,63 @@
+{
+	"id": "3df4fc71-6f0d-4521-8e93-065bd49cc7d2",
+	"values": [
+		{
+			"key": "MsgTokenReturn",
+			"value": "No token provided.",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "idNotFoundMessage",
+			"value": "ID não encontrado.",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "MsgusuarioNen",
+			"value": "Usuário não encontrado.",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "MsgcontagemNen",
+			"value": "Usuários não encontrados.",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "ListaDeErros",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "MsgEmpresaCriada",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "MsgEnderecoAtualizado",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "MsgSolicitInvalid",
+			"value": "Solicitação inválida.",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "DiretoriaSucesso",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		}
+	],
+	"name": "Globals",
+	"_postman_variable_scope": "globals",
+	"_postman_exported_at": "2025-04-17T15:55:39.607Z",
+	"_postman_exported_using": "Postman/11.36.3"
+}
