@@ -12,4 +12,4 @@ Instalação
 Postman Newman
 
 Links Úteis
-Swagger Chips Qa.Coders
+Swagger blacklist Qa.Coders
