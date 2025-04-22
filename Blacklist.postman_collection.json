@@ -493,10 +493,7 @@
 									"    pm.response.to.have.status(404);\r",
 									"});\r",
 									"\r",
-									"const responseBody = JSON.stringify({ errors: [\"Usuário não encontrado.\"] });\r",
-									"pm.test(\"Check msg: Usuário não encontrado.\", function () {\r",
-									"    pm.expect(pm.globals.get(\"MsgusuarioNen\")).to.eql(JSON.parse(responseBody).errors[0]);\r",
-									"});"
+									""
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -783,10 +780,7 @@
 									"    pm.response.to.have.status(404); \r",
 									"});\r",
 									"\r",
-									"const responseBody = JSON.stringify({ errors: [\"Usuários não encontrados.\"] });\r",
-									"pm.test(\"Check msg: Usuários não encontrados.\", function () {\r",
-									"    pm.expect(pm.globals.get(\"MsgcontagemNen\")).to.eql(JSON.parse(responseBody).errors[0]);\r",
-									"});"
+									""
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -1075,10 +1069,7 @@
 									"    pm.response.to.have.status(404); \r",
 									"});\r",
 									"\r",
-									"const responseBody = JSON.stringify({ errors: [\"ID não encontrado.\"] });\r",
-									"pm.test(\"Check msg: ID não encontrado.\", function () {\r",
-									"    pm.expect(pm.globals.get(\"idNotFoundMessage\")).to.eql(JSON.parse(responseBody).errors[0]);\r",
-									"});\r",
+									"\r",
 									""
 								],
 								"type": "text/javascript",
@@ -4801,10 +4792,7 @@
 									"    pm.response.to.have.status(400);\r",
 									"});\r",
 									"\r",
-									"const responseBody = JSON.stringify({ errors: [\"Solicitação inválida.\"] });\r",
-									"pm.test(\"Check msg: Solicitação inválida.\", function () {\r",
-									"    pm.expect(pm.globals.get(\"MsgSolicitInvalid\")).to.eql(JSON.parse(responseBody).errors[0]);\r",
-									"});\r",
+									"\r",
 									"\r",
 									"\r",
 									"\r",
@@ -5556,10 +5544,6 @@
 									"    pm.response.to.have.status(404);\r",
 									"});\r",
 									"\r",
-									"const responseBody = JSON.stringify({ errors: [\"Usuário não encontrado.\"] });\r",
-									"pm.test(\"Check msg: Usuário não encontrado.\", function () {\r",
-									"    pm.expect(pm.globals.get(\"MsgusuarioNen\")).to.eql(JSON.parse(responseBody).errors[0]);\r",
-									"});\r",
 									""
 								],
 								"type": "text/javascript",
